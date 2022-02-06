@@ -24,6 +24,10 @@ public enum ErroDeHeroi implements EnumeradoDeErro {
     FORCA_HEROI(
             "O forca do herói não pode ser nulo.",
             BAD_REQUEST
+    ),
+    ID_HEROI(
+            "O Id do herói não pode ser nulo.",
+            BAD_REQUEST
     )
     ;
 

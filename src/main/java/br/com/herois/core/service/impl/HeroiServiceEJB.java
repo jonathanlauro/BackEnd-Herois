@@ -27,12 +27,24 @@ public class HeroiServiceEJB implements HeroiService {
     }
 
     @Override
-    public Heroi atualizar(Heroi heroi) {
-        return null;
+    public Heroi atualizar(Heroi heroi) throws NegocioException {
+        if(isNull(heroi.getId())){
+            throw new NegocioException(ID_HEROI);
+        }
+        validaheroi(heroi);
+        Heroi busca = repositorio.carregar(heroi.getId());
+        if(isNull(busca)){
+            throw new NegocioException(HEROI_NAO_ENCONTRADO);
+        }
+        return repositorio.atualizar(heroi);
     }
 
     @Override
     public Heroi deletar(Long id) throws NegocioException {
+        Heroi busca = repositorio.carregar(id);
+        if(isNull(busca)){
+            throw new NegocioException(HEROI_NAO_ENCONTRADO);
+        }
         return repositorio.deletar(id);
     }
 

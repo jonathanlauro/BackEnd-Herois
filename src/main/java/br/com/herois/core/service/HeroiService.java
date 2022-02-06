@@ -9,7 +9,7 @@ public interface HeroiService {
 
     Heroi cadastrar(Heroi heroi) throws NegocioException;
 
-    Heroi atualizar(Heroi heroi);
+    Heroi atualizar(Heroi heroi) throws NegocioException;
 
     Heroi deletar(Long id) throws NegocioException;
 

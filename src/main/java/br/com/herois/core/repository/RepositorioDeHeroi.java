@@ -14,4 +14,6 @@ public interface RepositorioDeHeroi {
     Heroi deletar(Long id) throws NegocioException;
 
     List<Heroi> findAll();
+
+    Heroi carregar(Long id);
 }

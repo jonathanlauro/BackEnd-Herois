@@ -47,12 +47,9 @@ public class RepositorioDeHeroiEJB implements RepositorioDeHeroi {
     @Override
     public Heroi deletar(Long id) throws NegocioException {
         Heroi deletado = carregar(id);
-        if(nonNull(deletado)){
-            gerenciador.remove(deletado);
-            gerenciador.flush();
-            return deletado;
-        }
-        throw new NegocioException(HEROI_NAO_ENCONTRADO);
+        gerenciador.remove(deletado);
+        gerenciador.flush();
+        return deletado;
     }
 
     @Override
@@ -63,7 +60,8 @@ public class RepositorioDeHeroiEJB implements RepositorioDeHeroi {
         return gerenciador.createQuery(cq).getResultList();
     }
 
-    private Heroi carregar(Long id){
+    @Override
+    public Heroi carregar(Long id){
         return gerenciador.find(Heroi.class,id);
     }
 }
