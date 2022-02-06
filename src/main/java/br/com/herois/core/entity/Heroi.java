@@ -2,6 +2,7 @@ package br.com.herois.core.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity
 @Table(name = "tb_heroi")
@@ -63,6 +64,19 @@ public class Heroi implements Serializable {
 
     public void setForca(Integer forca) {
         this.forca = forca;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Heroi)) return false;
+        Heroi that = (Heroi) o;
+        return Objects.equals(this.getId(),that.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getId());
     }
 
     @Override
